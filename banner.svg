@@ -58,34 +58,22 @@
     <!-- ground -->
     <rect x="0" y="330" width="1200" height="50" fill="#04040a" opacity="0.9"/>
 
-    <!-- character: hooded, bear-eared silhouette (Lain bear-hood homage) -->
+    <!-- character: blacked-out anime bunny-girl silhouette (left-facing profile) -->
     <g>
-      <path d="M905 336 C 905 268 950 250 1013 250 C 1076 250 1121 268 1121 336 Z" fill="#070709"/>
-      <path d="M945 196 C 945 138 982 110 1013 110 C 1044 110 1082 138 1082 196 C 1082 236 1050 257 1013 257 C 976 257 945 236 945 196 Z" fill="#0a0a0e"/>
-      <circle cx="958" cy="117" r="25" fill="#0a0a0e"/>
-      <circle cx="1068" cy="117" r="25" fill="#0a0a0e"/>
-      <circle cx="958" cy="117" r="11" fill="#17171f"/>
-      <circle cx="1068" cy="117" r="11" fill="#17171f"/>
-      <ellipse cx="1013" cy="197" rx="47" ry="51" fill="#050507"/>
-      <!-- cyan rim light (Wired backlight catching the edge) -->
-      <path d="M945 200 C 945 138 982 110 1013 110 C 1044 110 1082 138 1082 200" stroke="#7df0ff" stroke-opacity="0.78" stroke-width="2.6" fill="none"/>
-      <path d="M935 119 a 24 24 0 0 1 46 0" stroke="#7df0ff" stroke-opacity="0.6" stroke-width="2" fill="none"/>
-      <path d="M1045 119 a 24 24 0 0 1 46 0" stroke="#7df0ff" stroke-opacity="0.6" stroke-width="2" fill="none"/>
-      <path d="M905 330 C 905 270 950 251 1013 250" stroke="#67e8f9" stroke-opacity="0.32" stroke-width="2.2" fill="none"/>
-      <!-- warm rim on the right edge (horizon catching) -->
-      <path d="M1082 200 C 1082 150 1055 120 1020 112" stroke="#fb9a9a" stroke-opacity="0.32" stroke-width="2" fill="none"/>
-      <!-- glowing eyes -->
-      <g>
-        <g filter="url(#eyeHalo)">
-          <ellipse cx="997" cy="196" rx="9" ry="12" fill="#ff3b3b"/>
-          <ellipse cx="1031" cy="196" rx="9" ry="12" fill="#ff3b3b"/>
-        </g>
-        <ellipse cx="997" cy="196" rx="6" ry="9" fill="#ff6b6b"/>
-        <ellipse cx="1031" cy="196" rx="6" ry="9" fill="#ff6b6b"/>
-        <ellipse cx="997" cy="195" rx="2.6" ry="4" fill="#fff0f0"/>
-        <ellipse cx="1031" cy="195" rx="2.6" ry="4" fill="#fff0f0"/>
-        <animate attributeName="opacity" values="1;0.55;1;0.8;1" dur="4s" repeatCount="indefinite"/>
+      <g fill="#060608">
+        <!-- head + hair + neck + shoulder profile -->
+        <path d="M1000 122 C982 124 966 138 958 158 C953 168 953 174 952 180 L944 190 L953 197 C955 200 955 203 953 206 L953 210 C954 214 956 220 961 223 C972 230 984 234 994 240 C999 248 1001 258 1001 268 C1000 282 986 296 970 306 C962 314 958 326 958 336 L1078 336 C1082 300 1082 254 1075 212 C1071 190 1067 174 1060 160 C1054 142 1044 130 1028 125 C1018 121 1008 121 1000 122 Z"/>
+        <!-- long bunny ears -->
+        <path d="M1004 126 C996 92 994 60 997 34 C998 27 1004 27 1007 35 C1014 64 1017 96 1018 124 Z"/>
+        <path d="M1024 124 C1026 96 1030 64 1037 35 C1040 27 1046 27 1047 34 C1049 60 1046 92 1038 126 Z"/>
       </g>
+      <!-- cyan rim traces the face profile (forehead, nose, lips, chin) -->
+      <path d="M1000 122 C982 124 966 138 958 158 C953 168 953 174 952 180 L944 190 L953 197 C955 200 955 203 953 206 L953 210 C954 214 956 220 961 223 C972 230 984 234 994 240" stroke="#7df0ff" stroke-opacity="0.78" stroke-width="2.4" fill="none" stroke-linejoin="round"/>
+      <path d="M994 240 C999 248 1001 258 1001 268 C1000 282 986 296 970 306 C962 314 958 326 958 336" stroke="#67e8f9" stroke-opacity="0.42" stroke-width="2.1" fill="none"/>
+      <path d="M997 34 C994 60 996 92 1004 126" stroke="#7df0ff" stroke-opacity="0.6" stroke-width="2.2" fill="none"/>
+      <!-- faint warm rim along the back hair + far ear -->
+      <path d="M1078 336 C1082 300 1082 254 1075 212 C1071 190 1067 174 1060 160" stroke="#fb9a9a" stroke-opacity="0.22" stroke-width="2" fill="none"/>
+      <path d="M1037 35 C1030 64 1026 96 1024 124" stroke="#fb9a9a" stroke-opacity="0.2" stroke-width="2" fill="none"/>
     </g>
 
     <!-- CRT scanlines -->
@@ -98,9 +86,7 @@
       <text x="70" y="208" fill="#f5f3f4">i like computers</text>
     </g>
 
-    <!-- Lain homage captions -->
-    <text x="70" y="58" font-family="ui-monospace, Menlo, monospace" font-size="14" letter-spacing="3" fill="#9aa3c7" fill-opacity="0.85">[ THE WIRED ]</text>
-    <text x="72" y="240" font-family="ui-monospace, Menlo, monospace" font-size="14" letter-spacing="2" fill="#e7a3a3" fill-opacity="0.85">present day &#183; present time</text>
+    <!-- (top captions removed) -->
 
     <!-- powerline status strip (Lain palette) -->
     <g font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="16" font-weight="700">
