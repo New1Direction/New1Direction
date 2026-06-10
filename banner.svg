@@ -34,9 +34,7 @@
     <rect width="1200" height="380" fill="url(#sky)"/>
     <ellipse cx="600" cy="362" rx="780" ry="230" fill="url(#horizon)"/>
 
-    <!-- the Wired: cold glow behind the watcher -->
-    <circle cx="1013" cy="200" r="178" fill="url(#wired)"/>
-    <circle cx="1013" cy="182" r="104" fill="url(#wiredCore)"/>
+    <!-- (character + glow removed) -->
 
     <!-- power lines (the literal powerline) -->
     <g stroke="#04040a" stroke-width="2.2" fill="none" opacity="0.95">
@@ -58,23 +56,7 @@
     <!-- ground -->
     <rect x="0" y="330" width="1200" height="50" fill="#04040a" opacity="0.9"/>
 
-    <!-- character: blacked-out anime bunny-girl silhouette (left-facing profile) -->
-    <g>
-      <g fill="#060608">
-        <!-- head + hair + neck + shoulder profile -->
-        <path d="M1000 122 C982 124 966 138 958 158 C953 168 953 174 952 180 L944 190 L953 197 C955 200 955 203 953 206 L953 210 C954 214 956 220 961 223 C972 230 984 234 994 240 C999 248 1001 258 1001 268 C1000 282 986 296 970 306 C962 314 958 326 958 336 L1078 336 C1082 300 1082 254 1075 212 C1071 190 1067 174 1060 160 C1054 142 1044 130 1028 125 C1018 121 1008 121 1000 122 Z"/>
-        <!-- long bunny ears -->
-        <path d="M1004 126 C996 92 994 60 997 34 C998 27 1004 27 1007 35 C1014 64 1017 96 1018 124 Z"/>
-        <path d="M1024 124 C1026 96 1030 64 1037 35 C1040 27 1046 27 1047 34 C1049 60 1046 92 1038 126 Z"/>
-      </g>
-      <!-- cyan rim traces the face profile (forehead, nose, lips, chin) -->
-      <path d="M1000 122 C982 124 966 138 958 158 C953 168 953 174 952 180 L944 190 L953 197 C955 200 955 203 953 206 L953 210 C954 214 956 220 961 223 C972 230 984 234 994 240" stroke="#7df0ff" stroke-opacity="0.78" stroke-width="2.4" fill="none" stroke-linejoin="round"/>
-      <path d="M994 240 C999 248 1001 258 1001 268 C1000 282 986 296 970 306 C962 314 958 326 958 336" stroke="#67e8f9" stroke-opacity="0.42" stroke-width="2.1" fill="none"/>
-      <path d="M997 34 C994 60 996 92 1004 126" stroke="#7df0ff" stroke-opacity="0.6" stroke-width="2.2" fill="none"/>
-      <!-- faint warm rim along the back hair + far ear -->
-      <path d="M1078 336 C1082 300 1082 254 1075 212 C1071 190 1067 174 1060 160" stroke="#fb9a9a" stroke-opacity="0.22" stroke-width="2" fill="none"/>
-      <path d="M1037 35 C1030 64 1026 96 1024 124" stroke="#fb9a9a" stroke-opacity="0.2" stroke-width="2" fill="none"/>
-    </g>
+    <!-- (character removed — scene only) -->
 
     <!-- CRT scanlines -->
     <rect width="1200" height="380" fill="url(#scan)"/>
@@ -88,22 +70,7 @@
 
     <!-- (top captions removed) -->
 
-    <!-- powerline status strip (Lain palette) -->
-    <g font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="16" font-weight="700">
-      <rect x="0" y="338" width="1200" height="42" fill="#050507"/>
-      <rect x="40" y="345" width="200" height="28" fill="#1f2937"/>
-      <rect x="240" y="345" width="96" height="28" fill="#7f1d1d"/>
-      <rect x="336" y="345" width="208" height="28" fill="#111827"/>
-      <rect x="544" y="345" width="150" height="28" fill="#0e7490"/>
-      <path d="M240 345 L258 359 L240 373 Z" fill="#1f2937"/>
-      <path d="M336 345 L354 359 L336 373 Z" fill="#7f1d1d"/>
-      <path d="M544 345 L562 359 L544 373 Z" fill="#111827"/>
-      <path d="M694 345 L712 359 L694 373 Z" fill="#0e7490"/>
-      <text x="58" y="365" fill="#cbd5e1">~/new1direction</text>
-      <text x="266" y="365" fill="#fecaca">wired</text>
-      <text x="360" y="365" fill="#e2e8f0">rust &#183; python &#183; ts</text>
-      <text x="568" y="365" fill="#cffafe">&#10003; verifiable</text>
-    </g>
+    <!-- (status strip removed) -->
   </g>
   <rect x="0.5" y="0.5" width="1199" height="379" rx="14" fill="none" stroke="#000000" stroke-opacity="0.6"/>
 </svg>
