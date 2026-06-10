@@ -1,8 +1,6 @@
 ![i like computers](banner.svg)
 
-### hey — i like computers 👋
-
-i build AI you can actually check: agents that keep a tamper-evident receipt of everything they do, so you never have to just *trust* the black box.
+### hi , Im addicted to LLMs
 
 ### what i'm building
 
@@ -12,11 +10,9 @@ i build AI you can actually check: agents that keep a tamper-evident receipt of 
 - **[korgchat](https://github.com/New1Direction/korgchat)** — chat where every message is a checkable ledger event
 - **[thumper](https://github.com/New1Direction/thumper)** — the fast layer under korgex: runs code in seconds and heals its own errors
 
-**🔍 making AI judgment checkable**
+**🔍 My Other Ideas*
 - **[coherence-auditor](https://github.com/New1Direction/coherence-auditor)** — catches an AI contradicting its own stated odds and prices the slip as a guaranteed-loss bet
 - **[psd-common-sense](https://github.com/New1Direction/psd-common-sense)** — a safety layer that vets an agent's actions before they happen
-
-**🧰 other things i've built**
 - **[webmcp-anything](https://github.com/New1Direction/webmcp-anything)** — turn any URL into agent-callable MCP tools
 - **[ningen-shikkaku](https://github.com/New1Direction/ningen-shikkaku)** — secrets that live only as long as your session does
 - **[SKTPG](https://github.com/New1Direction/SKTPG)** — directional intelligence: skate where the puck is going
