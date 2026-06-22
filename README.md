@@ -1,30 +1,29 @@
-![i like computers](banner.svg)
+![New1Direction](banner.svg)
 
-### hi , Im addicted to LLMs
+**Self-taught engineer — AI agent infrastructure, Rust systems, and security.**
 
-### what i'm building
+I build tooling that makes autonomous AI agents **verifiable, recoverable, and safe to run** — from a tamper-evident execution ledger, to ephemeral secret handling, to a coding agent that keeps its receipts.
 
-**🧾 the korg stack — verifiable AI**
-- **[korg](https://github.com/New1Direction/korg)** · [live](https://yvaehkorg.lol) — the runtime + ledger that makes an agent's every move provable
-- **[korgex](https://github.com/New1Direction/korgex)** · [docs](https://korgex-docs.pages.dev) — an AI coding agent that works with any model and keeps the receipts
-- **[korgchat](https://github.com/New1Direction/korgchat)** — chat where every message is a checkable ledger event
-- **[thumper](https://github.com/New1Direction/thumper)** — the fast layer under korgex: runs code in seconds and heals its own errors
+## Flagship projects
 
-**🔍 My Other Ideas*
-- **[coherence-auditor](https://github.com/New1Direction/coherence-auditor)** — catches an AI contradicting its own stated odds and prices the slip as a guaranteed-loss bet
-- **[psd-common-sense](https://github.com/New1Direction/psd-common-sense)** — a safety layer that vets an agent's actions before they happen
-- **[webmcp-anything](https://github.com/New1Direction/webmcp-anything)** — turn any URL into agent-callable MCP tools
-- **[ningen-shikkaku](https://github.com/New1Direction/ningen-shikkaku)** — secrets that live only as long as your session does
-- **[SKTPG](https://github.com/New1Direction/SKTPG)** — directional intelligence: skate where the puck is going
-- **[pretexter](https://github.com/New1Direction/pretexter)** — makes AI agents experts at @chenglou/pretext
-- **[pi-platform](https://github.com/New1Direction/pi-platform)** — a deterministic semantic execution fabric with governance layers
+- **[korg](https://github.com/New1Direction/korg)** — a causally-ordered, rewindable event-ledger for autonomous agents. Every step an agent takes is recorded in a hash-chained, tamper-evident ledger anyone can independently verify. Rust · zero-trust · no blockchain.
+- **[ningen-shikkaku](https://github.com/New1Direction/ningen-shikkaku)** — burn-after-reading secrets for AI agents. Keys live in `mlock`'d, non-swappable RAM, are served over MCP, and are wiped after N reads or the instant your session dies. A hardened Rust daemon (seccomp allowlist, no core dumps, non-elidable memory wipe) shipped with a fully-documented threat model.
+- **[korgex](https://github.com/New1Direction/korgex)** — a verifiable AI coding agent that works with any model and keeps a checkable record of every change it makes. Python · published on PyPI.
 
-<sub>📖 each project's full docs live in its README — click through for the deep dive.</sub>
+## Selected work
+
+- **[thumper](https://github.com/New1Direction/thumper)** — the local execution and self-recovery substrate beneath korgex: runs code fast and repairs its own errors.
+- **[webmcp-anything](https://github.com/New1Direction/webmcp-anything)** ([wmcp.sh](https://wmcp.sh)) — turn any website into agent-callable MCP tools with one line of config.
+- **[RepoLens](https://github.com/New1Direction/RepoLens)** — click any repository and get a straight answer on whether to use it.
+- **[coherence-auditor](https://github.com/New1Direction/coherence-auditor)** — detects an LLM contradicting its own stated probabilities and prices the inconsistency as a guaranteed-loss bet.
+- **[pi-platform](https://github.com/New1Direction/pi-platform)** — a deterministic semantic execution kernel with a governance-first architecture.
+
+<sub>Each project's full documentation lives in its README.</sub>
 
 ---
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/New1Direction/New1Direction/output/github-contribution-grid-snake-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/New1Direction/New1Direction/output/github-contribution-grid-snake.svg">
-  <img alt="a snake eating my github contribution graph" src="https://raw.githubusercontent.com/New1Direction/New1Direction/output/github-contribution-grid-snake.svg">
+  <img alt="New1Direction contribution graph" src="https://raw.githubusercontent.com/New1Direction/New1Direction/output/github-contribution-grid-snake.svg">
 </picture>
