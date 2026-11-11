@@ -36,6 +36,7 @@ jobs:
         run: |
           python3 scripts/update_data.py
           python3 scripts/build_city.py
+          python3 scripts/build_year.py
 
       - name: commit if the city changed
         run: |

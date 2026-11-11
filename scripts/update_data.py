@@ -3,6 +3,7 @@
 
 - data/stats.json: stars and last-push date for each tower's repo.
 - data/visitors.json: people who lit a window (one entry per GitHub login).
+- data/calendar.json: the last year of daily contribution counts.
 
 Runs in GitHub Actions. A visitor's login arrives in the VISITOR environment
 variable and is checked against GitHub's own username rules before use.
@@ -24,6 +25,7 @@ from city_config import OWNER, TOWERS
 DATA = Path(__file__).resolve().parent.parent / "data"
 STATS = DATA / "stats.json"
 VISITORS = DATA / "visitors.json"
+CALENDAR = DATA / "calendar.json"
 HIDDEN = DATA / "hidden.txt"
 
 LOGIN_PATTERN = re.compile(r"^[A-Za-z0-9](?:[A-Za-z0-9-]{0,37}[A-Za-z0-9])?$")
@@ -75,6 +77,46 @@ def refreshed_stats(previous: dict) -> dict:
     return stats
 
 
+CALENDAR_QUERY = """
+query($login: String!) {
+  user(login: $login) {
+    contributionsCollection {
+      contributionCalendar {
+        totalContributions
+        weeks { contributionDays { date contributionCount } }
+      }
+    }
+  }
+}
+"""
+
+
+def fetch_calendar() -> dict | None:
+    """The last year of contributions, as {"total": n, "weeks": [[{date, count}]]}."""
+    token = os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN")
+    if not token:
+        print("warning: no token, so the contribution calendar was not refreshed", file=sys.stderr)
+        return None
+    request = urllib.request.Request(
+        "https://api.github.com/graphql",
+        data=json.dumps({"query": CALENDAR_QUERY, "variables": {"login": OWNER}}).encode(),
+        headers={"Authorization": f"Bearer {token}", "User-Agent": "profile-city"},
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=API_TIMEOUT_SECONDS) as response:
+            calendar = json.load(response)["data"]["user"]["contributionsCollection"]["contributionCalendar"]
+        return {
+            "total": int(calendar["totalContributions"]),
+            "weeks": [
+                [{"date": str(day["date"]), "count": int(day["contributionCount"])} for day in week["contributionDays"]]
+                for week in calendar["weeks"]
+            ],
+        }
+    except (urllib.error.URLError, TimeoutError, ValueError, KeyError, TypeError) as error:
+        print(f"warning: could not read the contribution calendar: {error}", file=sys.stderr)
+        return None
+
+
 def hidden_logins() -> set[str]:
     try:
         lines = HIDDEN.read_text(encoding="utf-8").splitlines()
@@ -97,6 +139,9 @@ def with_visitor(visitors: list[dict], login: str) -> list[dict]:
 
 def main() -> None:
     save_json(STATS, refreshed_stats(load_json(STATS, {})))
+    calendar = fetch_calendar()
+    if calendar:
+        save_json(CALENDAR, calendar)
 
     visitors = load_json(VISITORS, [])
     login = os.environ.get("VISITOR", "").strip()

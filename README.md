@@ -50,11 +50,7 @@ Tools for AI agents you can check, rewind and trust with secrets.
   <a href="https://github.com/New1Direction/okto"><img src="assets/card-okto.svg" width="49.5%" alt="okto: a self-healing local proxy for AI agent traffic. Python."></a>
 </p>
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/New1Direction/New1Direction/output/github-contribution-grid-snake-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/New1Direction/New1Direction/output/github-contribution-grid-snake.svg">
-  <img alt="New1Direction contribution graph" src="https://raw.githubusercontent.com/New1Direction/New1Direction/output/github-contribution-grid-snake.svg" width="100%">
-</picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/year-dark.svg"><source media="(prefers-color-scheme: light)" srcset="assets/year-light.svg"><img src="assets/year-dark.svg" width="100%" alt="A year of work, seen from above: every day of the last year drawn as a building, taller on busier days."></picture>
 
 <details>
 <summary><b>How this page works</b></summary>
@@ -65,6 +61,7 @@ No JavaScript runs here. GitHub doesn't allow it, so everything is a picture tha
 - **The city is data.** A GitHub Action reads each repo's stars once a day and redraws its tower. More stars, more floors. A blinking beacon means the repo changed this month.
 - **Every tower is its own picture**, placed edge to edge, which is why you can click them one by one.
 - **The motion is CSS inside SVG.** The headline, the shooting stars and the flickering windows are drawn once and animate on their own. If your device asks for less motion, they hold still.
+- **The year view is my contribution graph in 3D.** Each day of the last year is a building, taller on busier days. It rises in a wave when the page loads and is redrawn daily.
 - **Night and day follow your theme.** Switch GitHub between dark and light and the city goes from night to dawn.
 - **Lighting a window opens an issue.** An Action reads only your username, adds a lit window, redraws the city and closes the issue, usually within a minute.
 
