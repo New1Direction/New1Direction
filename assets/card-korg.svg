@@ -1,10 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="600" height="150" viewBox="0 0 600 150" role="img" aria-label="korg: A tamper-evident, replayable ledger of what an AI agent did and why.">
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="176" viewBox="0 0 600 176" role="img" aria-label="korg: A tamper-evident, replayable ledger of what an AI agent did and why. Rust. 4 stars.">
   <title>korg</title>
-  <rect x="0.5" y="0.5" width="599" height="149" rx="14.5" fill="#110f20" stroke="#2b2545"/>
-  <rect x="28" y="33" width="10" height="10" rx="2.5" fill="#ff7a59"/>
-  <text x="50" y="45" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="21" font-weight="700" fill="#f6f1e7">korg</text>
-  <text x="28" y="80" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16.5" fill="#a9a4c2">A tamper-evident, replayable ledger of what an AI agent</text>
-<text x="28" y="104" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16.5" fill="#a9a4c2">did and why.</text>
-  <circle cx="566" cy="38" r="5" fill="#dea584"/>
-  <text x="554" y="43" text-anchor="end" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#a9a4c2">Rust</text>
+  <style>
+    .seal { opacity: 0; animation: seal 3.6s ease-in-out infinite; }
+    .blk { animation: blk 3.6s ease-in-out infinite; }
+    @keyframes seal { 0%, 8% { opacity: 0; } 20%, 82% { opacity: 1; } 100% { opacity: 0; } }
+    @keyframes blk { 0%, 8% { stroke-opacity: .35; } 20%, 82% { stroke-opacity: 1; } 100% { stroke-opacity: .35; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+  <rect x="0.5" y="0.5" width="599" height="175" rx="16.5" fill="#110f20" stroke="#2b2545"/>
+  <rect x="416" y="44" width="166" height="112" rx="12" fill="#0b0a17"/>
+  <text x="28" y="48" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="21" font-weight="700" fill="#f6f1e7">korg</text>
+  <circle cx="452" cy="28" r="5" fill="#dea584"/>
+  <text x="462" y="33" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#a9a4c2">Rust</text>
+  <text x="572" y="33" text-anchor="end" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#f6f1e7" fill-opacity="0.85">★ 4</text>
+  <text x="28" y="84" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16" fill="#a9a4c2">A tamper-evident, replayable ledger of what</text>
+<text x="28" y="107" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16" fill="#a9a4c2">an AI agent did and why.</text>
+  <g transform="translate(426 50)"><line x1="40" y1="50" x2="56" y2="50" stroke="#a9a4c2" stroke-width="2"/><line x1="88" y1="50" x2="104" y2="50" stroke="#a9a4c2" stroke-width="2"/><rect class="blk" style="animation-delay:0.0s" x="8" y="34" width="32" height="32" rx="7" fill="none" stroke="#f6f1e7" stroke-width="2"/><rect class="seal" style="animation-delay:0.0s" x="17" y="43" width="14" height="14" rx="3" fill="#ff7a59"/><rect class="blk" style="animation-delay:0.9s" x="56" y="34" width="32" height="32" rx="7" fill="none" stroke="#f6f1e7" stroke-width="2"/><rect class="seal" style="animation-delay:0.9s" x="65" y="43" width="14" height="14" rx="3" fill="#ff7a59"/><rect class="blk" style="animation-delay:1.8s" x="104" y="34" width="32" height="32" rx="7" fill="none" stroke="#f6f1e7" stroke-width="2"/><rect class="seal" style="animation-delay:1.8s" x="113" y="43" width="14" height="14" rx="3" fill="#ff7a59"/></g>
 </svg>

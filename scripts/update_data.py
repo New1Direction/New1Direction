@@ -4,13 +4,18 @@
 - data/stats.json: stars and last-push date for each tower's repo.
 - data/visitors.json: people who lit a window (one entry per GitHub login).
 - data/calendar.json: the last year of daily contribution counts.
+- data/extras.json: the account's join date and repo.ing's public fee figure.
+- data/avatars/: a small copy of each visitor's avatar, for the ticker.
+- data/votes.json: one rooftop-garden vote per visitor.
 
 Runs in GitHub Actions. A visitor's login arrives in the VISITOR environment
 variable and is checked against GitHub's own username rules before use.
-Nothing from an issue's title or body is ever read here.
+An issue's title arrives in ISSUE_TITLE and is only ever compared against the
+fixed list of vote titles. Nothing from an issue's body is read.
 """
 from __future__ import annotations
 
+import base64
 import json
 import os
 import re
@@ -26,11 +31,20 @@ DATA = Path(__file__).resolve().parent.parent / "data"
 STATS = DATA / "stats.json"
 VISITORS = DATA / "visitors.json"
 CALENDAR = DATA / "calendar.json"
+EXTRAS = DATA / "extras.json"
+VOTES = DATA / "votes.json"
+AVATARS = DATA / "avatars"
 HIDDEN = DATA / "hidden.txt"
 
 LOGIN_PATTERN = re.compile(r"^[A-Za-z0-9](?:[A-Za-z0-9-]{0,37}[A-Za-z0-9])?$")
 MAX_VISITORS = 500
 API_TIMEOUT_SECONDS = 20
+AVATAR_PIXELS = 48
+AVATARS_KEPT = 24
+MAX_AVATAR_BYTES = 60_000
+REPOING_BADGE = "https://repo.ing/api/badge/1388219884"
+FEES_PATTERN = re.compile(r"([0-9][0-9.,]*) SOL in indexed builder fees")
+VOTE_PREFIX = "vote for "
 
 
 def load_json(path: Path, fallback):
@@ -137,20 +151,84 @@ def with_visitor(visitors: list[dict], login: str) -> list[dict]:
     return (visitors + [{"login": login, "at": today}])[-MAX_VISITORS:]
 
 
+def fetch_bytes(url: str, limit: int) -> bytes | None:
+    request = urllib.request.Request(url, headers={"User-Agent": "profile-city"})
+    try:
+        with urllib.request.urlopen(request, timeout=API_TIMEOUT_SECONDS) as response:
+            data = response.read(limit + 1)
+    except (urllib.error.URLError, TimeoutError, ValueError) as error:
+        print(f"warning: could not fetch {url}: {error}", file=sys.stderr)
+        return None
+    return data if len(data) <= limit else None
+
+
+def refreshed_extras(previous: dict) -> dict:
+    """Join date and repo.ing's public builder-fee figure. Old values are
+    kept when a source can't be read, so the page never shows a guess."""
+    extras = dict(previous)
+    user = fetch_bytes(f"https://api.github.com/users/{OWNER}", 100_000)
+    if user:
+        try:
+            extras["joined"] = str(json.loads(user)["created_at"])[:10]
+        except (ValueError, KeyError):
+            pass
+    badge = fetch_bytes(REPOING_BADGE, 20_000)
+    match = FEES_PATTERN.search(badge.decode("utf-8", "replace")) if badge else None
+    if match:
+        extras["repoing_fees_sol"] = match.group(1)
+    return extras
+
+
+def save_avatar(login: str) -> None:
+    """Keep a small copy of a visitor's avatar for the ticker."""
+    path = AVATARS / f"{login.lower()}.b64"
+    if path.exists():
+        return
+    image = fetch_bytes(f"https://github.com/{login}.png?size={AVATAR_PIXELS}", MAX_AVATAR_BYTES)
+    kind = "png" if image and image[:8] == b"\x89PNG\r\n\x1a\n" else "jpeg" if image and image[:2] == b"\xff\xd8" else None
+    if not kind:
+        return
+    AVATARS.mkdir(parents=True, exist_ok=True)
+    path.write_text(f"data:image/{kind};base64,{base64.b64encode(image).decode('ascii')}\n", encoding="utf-8")
+
+
+def with_vote(votes: dict, login: str, title: str) -> dict:
+    """Record `login`'s vote if the title names a real tower. One vote each;
+    voting again moves it."""
+    if not LOGIN_PATTERN.fullmatch(login) or not title.lower().startswith(VOTE_PREFIX):
+        return votes
+    wanted = title[len(VOTE_PREFIX):].strip().lower()
+    choice = next((tower["repo"] for tower in TOWERS if tower["repo"].lower() == wanted), None)
+    if choice is None:
+        print("skipping vote: not one of the towers", file=sys.stderr)
+        return votes
+    return {**votes, login.lower(): choice}
+
+
 def main() -> None:
     save_json(STATS, refreshed_stats(load_json(STATS, {})))
     calendar = fetch_calendar()
     if calendar:
         save_json(CALENDAR, calendar)
 
+    save_json(EXTRAS, refreshed_extras(load_json(EXTRAS, {})))
+
     visitors = load_json(VISITORS, [])
+    votes = load_json(VOTES, {})
     login = os.environ.get("VISITOR", "").strip()
+    title = os.environ.get("ISSUE_TITLE", "").strip()
     if login:
+        # Voting also lights a window: either way, you were here.
         visitors = with_visitor(visitors, login)
+        votes = with_vote(votes, login, title)
     hidden = hidden_logins()
     visitors = [v for v in visitors if v["login"].lower() not in hidden]
+    votes = {voter: choice for voter, choice in votes.items() if voter not in hidden}
+    for visitor in visitors[-AVATARS_KEPT:]:
+        save_avatar(visitor["login"])
     save_json(VISITORS, visitors)
-    print(f"{len(visitors)} windows lit")
+    save_json(VOTES, votes)
+    print(f"{len(visitors)} windows lit, {len(votes)} votes")
 
 
 if __name__ == "__main__":

@@ -1,7 +1,7 @@
 name: build the city
 
-# Redraws the profile's skyline from live repo data once a day, and lights a
-# window when a visitor opens a "light a window" issue.
+# Redraws the profile from live data once a day. It also reacts to two kinds
+# of visitor issue: "light a window" and "vote for <tower>".
 on:
   schedule:
     - cron: "17 5 * * *"
@@ -20,9 +20,12 @@ concurrency:
 
 jobs:
   build:
-    # For issues, only the "light a window" ones. The title is compared here,
-    # in an expression, and is never passed to a shell.
-    if: github.event_name != 'issues' || startsWith(github.event.issue.title, 'light a window')
+    # For issues, only the two kinds this page makes. Titles are compared in
+    # expressions and passed to Python as data; they are never run by a shell.
+    if: >-
+      github.event_name != 'issues'
+      || startsWith(github.event.issue.title, 'light a window')
+      || startsWith(github.event.issue.title, 'vote for ')
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -33,10 +36,13 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # Only the opener's login is used. It is validated in update_data.py.
           VISITOR: ${{ github.event_name == 'issues' && github.event.issue.user.login || '' }}
+          # Only ever compared against the fixed list of "vote for <tower>" titles.
+          ISSUE_TITLE: ${{ github.event_name == 'issues' && github.event.issue.title || '' }}
         run: |
           python3 scripts/update_data.py
           python3 scripts/build_city.py
           python3 scripts/build_year.py
+          python3 scripts/build_assets.py
 
       - name: commit if the city changed
         run: |
@@ -57,4 +63,4 @@ jobs:
           ISSUE: ${{ github.event.issue.number }}
           REPO: ${{ github.repository }}
         run: |
-          gh issue close "$ISSUE" --repo "$REPO" --comment "Your window is lit. Refresh the profile in a minute to see it. Thanks for stopping by."
+          gh issue close "$ISSUE" --repo "$REPO" --comment "Done. Refresh the profile in a minute to see the city change. Thanks for stopping by."

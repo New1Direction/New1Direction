@@ -1,10 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="600" height="150" viewBox="0 0 600 150" role="img" aria-label="RepoLens: A Chrome extension with a straight answer on whether a repo is ready to use.">
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="176" viewBox="0 0 600 176" role="img" aria-label="RepoLens: A Chrome extension with a straight answer on whether a repo is ready to use. JavaScript. 4 stars.">
   <title>RepoLens</title>
-  <rect x="0.5" y="0.5" width="599" height="149" rx="14.5" fill="#110f20" stroke="#2b2545"/>
-  <rect x="28" y="33" width="10" height="10" rx="2.5" fill="#ff7a59"/>
-  <text x="50" y="45" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="21" font-weight="700" fill="#f6f1e7">RepoLens</text>
-  <text x="28" y="80" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16.5" fill="#a9a4c2">A Chrome extension with a straight answer on whether a</text>
-<text x="28" y="104" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16.5" fill="#a9a4c2">repo is ready to use.</text>
-  <circle cx="566" cy="38" r="5" fill="#f1e05a"/>
-  <text x="554" y="43" text-anchor="end" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#a9a4c2">JavaScript</text>
+  <style>
+    .lens { animation: lens 5s ease-in-out infinite alternate; }
+    @keyframes lens { from { transform: translateX(0); } to { transform: translateX(72px); } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+  <rect x="0.5" y="0.5" width="599" height="175" rx="16.5" fill="#110f20" stroke="#2b2545"/>
+  <rect x="416" y="44" width="166" height="112" rx="12" fill="#0b0a17"/>
+  <text x="28" y="48" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="21" font-weight="700" fill="#f6f1e7">RepoLens</text>
+  <circle cx="452" cy="28" r="5" fill="#f1e05a"/>
+  <text x="462" y="33" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#a9a4c2">JavaScript</text>
+  <text x="572" y="33" text-anchor="end" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#f6f1e7" fill-opacity="0.85">★ 4</text>
+  <text x="28" y="84" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16" fill="#a9a4c2">A Chrome extension with a straight answer</text>
+<text x="28" y="107" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16" fill="#a9a4c2">on whether a repo is ready to use.</text>
+  <g transform="translate(426 50)"><rect x="8" y="16" width="112" height="8" rx="4" fill="#a9a4c2" fill-opacity="0.45"/><rect x="8" y="36" width="84" height="8" rx="4" fill="#a9a4c2" fill-opacity="0.45"/><rect x="8" y="56" width="124" height="8" rx="4" fill="#a9a4c2" fill-opacity="0.45"/><rect x="8" y="76" width="70" height="8" rx="4" fill="#a9a4c2" fill-opacity="0.45"/><g class="lens"><circle cx="34" cy="44" r="22" fill="#110f20" fill-opacity="0.55" stroke="#ff7a59" stroke-width="3.2"/><line x1="50" y1="60" x2="64" y2="76" stroke="#ff7a59" stroke-width="4.5" stroke-linecap="round"/><path d="M24 46 l7 7 l13 -15" fill="none" stroke="#f6f1e7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g></g>
 </svg>

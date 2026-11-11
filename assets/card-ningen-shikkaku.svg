@@ -1,10 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="600" height="150" viewBox="0 0 600 150" role="img" aria-label="ningen-shikkaku: Secrets for AI agents that live in locked memory and vanish when your session ends.">
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="176" viewBox="0 0 600 176" role="img" aria-label="ningen-shikkaku: Secrets for AI agents that live in locked memory and vanish when your session ends. Rust. 3 stars.">
   <title>ningen-shikkaku</title>
-  <rect x="0.5" y="0.5" width="599" height="149" rx="14.5" fill="#110f20" stroke="#2b2545"/>
-  <rect x="28" y="33" width="10" height="10" rx="2.5" fill="#ff7a59"/>
-  <text x="50" y="45" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="21" font-weight="700" fill="#f6f1e7">ningen-shikkaku</text>
-  <text x="28" y="80" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16.5" fill="#a9a4c2">Secrets for AI agents that live in locked memory and</text>
-<text x="28" y="104" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16.5" fill="#a9a4c2">vanish when your session ends.</text>
-  <circle cx="566" cy="38" r="5" fill="#dea584"/>
-  <text x="554" y="43" text-anchor="end" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#a9a4c2">Rust</text>
+  <style>
+    .ring { stroke-dasharray: 239; animation: ring 6s linear infinite; }
+    .key { animation: key 6s linear infinite; }
+    @keyframes ring { 0% { stroke-dashoffset: 0; } 84%, 100% { stroke-dashoffset: 239; } }
+    @keyframes key { 0%, 70% { opacity: 1; } 84%, 94% { opacity: 0; } 100% { opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+  <rect x="0.5" y="0.5" width="599" height="175" rx="16.5" fill="#110f20" stroke="#2b2545"/>
+  <rect x="416" y="44" width="166" height="112" rx="12" fill="#0b0a17"/>
+  <text x="28" y="48" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="21" font-weight="700" fill="#f6f1e7">ningen-shikkaku</text>
+  <circle cx="452" cy="28" r="5" fill="#dea584"/>
+  <text x="462" y="33" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#a9a4c2">Rust</text>
+  <text x="572" y="33" text-anchor="end" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#f6f1e7" fill-opacity="0.85">★ 3</text>
+  <text x="28" y="84" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16" fill="#a9a4c2">Secrets for AI agents that live in locked</text>
+<text x="28" y="107" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16" fill="#a9a4c2">memory and vanish when your session ends.</text>
+  <g transform="translate(426 50)"><circle cx="73" cy="50" r="38" fill="none" stroke="#2b2545" stroke-width="5"/><circle class="ring" cx="73" cy="50" r="38" fill="none" stroke="#ff7a59" stroke-width="5" stroke-linecap="round" transform="rotate(-90 73 50)"/><g class="key"><circle cx="62" cy="50" r="9" fill="none" stroke="#f6f1e7" stroke-width="3.2"/><path d="M71 50 H94 M86 50 V58 M93 50 V56" fill="none" stroke="#f6f1e7" stroke-width="3.2" stroke-linecap="round"/></g></g>
 </svg>

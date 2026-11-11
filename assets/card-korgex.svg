@@ -1,10 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="600" height="150" viewBox="0 0 600 150" role="img" aria-label="korgex: A coding agent for any model that keeps a checkable record of every change.">
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="176" viewBox="0 0 600 176" role="img" aria-label="korgex: A coding agent for any model that keeps a checkable record of every change. Python. 5 stars.">
   <title>korgex</title>
-  <rect x="0.5" y="0.5" width="599" height="149" rx="14.5" fill="#110f20" stroke="#2b2545"/>
-  <rect x="28" y="33" width="10" height="10" rx="2.5" fill="#ff7a59"/>
-  <text x="50" y="45" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="21" font-weight="700" fill="#f6f1e7">korgex</text>
-  <text x="28" y="80" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16.5" fill="#a9a4c2">A coding agent for any model that keeps a checkable record</text>
-<text x="28" y="104" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16.5" fill="#a9a4c2">of every change.</text>
-  <circle cx="566" cy="38" r="5" fill="#6ea8dc"/>
-  <text x="554" y="43" text-anchor="end" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#a9a4c2">Python</text>
+  <style>
+    .tick { stroke-dasharray: 22; stroke-dashoffset: 22; animation: tick 4.4s ease-out infinite; }
+    @keyframes tick { 0%, 6% { stroke-dashoffset: 22; } 16%, 86% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: 22; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+  <rect x="0.5" y="0.5" width="599" height="175" rx="16.5" fill="#110f20" stroke="#2b2545"/>
+  <rect x="416" y="44" width="166" height="112" rx="12" fill="#0b0a17"/>
+  <text x="28" y="48" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="21" font-weight="700" fill="#f6f1e7">korgex</text>
+  <circle cx="452" cy="28" r="5" fill="#6ea8dc"/>
+  <text x="462" y="33" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#a9a4c2">Python</text>
+  <text x="572" y="33" text-anchor="end" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#f6f1e7" fill-opacity="0.85">★ 5</text>
+  <text x="28" y="84" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16" fill="#a9a4c2">A coding agent for any model that keeps a</text>
+<text x="28" y="107" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16" fill="#a9a4c2">checkable record of every change.</text>
+  <g transform="translate(426 50)"><rect x="8" y="14" width="86" height="8" rx="4" fill="#a9a4c2" fill-opacity="0.45"/><path class="tick" style="animation-delay:0.0s" d="M118 18 l5 5 l9 -10" fill="none" stroke="#ff7a59" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><rect x="8" y="36" width="62" height="8" rx="4" fill="#a9a4c2" fill-opacity="0.45"/><path class="tick" style="animation-delay:0.7s" d="M118 40 l5 5 l9 -10" fill="none" stroke="#ff7a59" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><rect x="8" y="58" width="98" height="8" rx="4" fill="#a9a4c2" fill-opacity="0.45"/><path class="tick" style="animation-delay:1.4s" d="M118 62 l5 5 l9 -10" fill="none" stroke="#ff7a59" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><rect x="8" y="80" width="74" height="8" rx="4" fill="#a9a4c2" fill-opacity="0.45"/><path class="tick" style="animation-delay:2.1s" d="M118 84 l5 5 l9 -10" fill="none" stroke="#ff7a59" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></g>
 </svg>

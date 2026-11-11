@@ -1,10 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="600" height="150" viewBox="0 0 600 150" role="img" aria-label="OntologyEX: Point an agent at a repo and get back the business it runs, every claim cited.">
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="176" viewBox="0 0 600 176" role="img" aria-label="OntologyEX: Point an agent at a repo and get back the business it runs, every claim cited. Python. 10 stars.">
   <title>OntologyEX</title>
-  <rect x="0.5" y="0.5" width="599" height="149" rx="14.5" fill="#110f20" stroke="#2b2545"/>
-  <rect x="28" y="33" width="10" height="10" rx="2.5" fill="#ff7a59"/>
-  <text x="50" y="45" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="21" font-weight="700" fill="#f6f1e7">OntologyEX</text>
-  <text x="28" y="80" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16.5" fill="#a9a4c2">Point an agent at a repo and get back the business it</text>
-<text x="28" y="104" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16.5" fill="#a9a4c2">runs, every claim cited.</text>
-  <circle cx="566" cy="38" r="5" fill="#6ea8dc"/>
-  <text x="554" y="43" text-anchor="end" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#a9a4c2">Python</text>
+  <style>
+    .node { animation: node 3.3s ease-in-out infinite; }
+    @keyframes node { 0%, 100% { fill: #f6f1e7; } 12% { fill: #ff7a59; } 30% { fill: #f6f1e7; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+  <rect x="0.5" y="0.5" width="599" height="175" rx="16.5" fill="#110f20" stroke="#2b2545"/>
+  <rect x="416" y="44" width="166" height="112" rx="12" fill="#0b0a17"/>
+  <text x="28" y="48" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="21" font-weight="700" fill="#f6f1e7">OntologyEX</text>
+  <circle cx="452" cy="28" r="5" fill="#6ea8dc"/>
+  <text x="462" y="33" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#a9a4c2">Python</text>
+  <text x="572" y="33" text-anchor="end" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#f6f1e7" fill-opacity="0.85">★ 10</text>
+  <text x="28" y="84" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16" fill="#a9a4c2">Point an agent at a repo and get back the</text>
+<text x="28" y="107" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16" fill="#a9a4c2">business it runs, every claim cited.</text>
+  <g transform="translate(426 50)"><line x1="24" y1="50" x2="62" y2="20" stroke="#a9a4c2" stroke-opacity="0.55" stroke-width="1.8"/><line x1="24" y1="50" x2="62" y2="80" stroke="#a9a4c2" stroke-opacity="0.55" stroke-width="1.8"/><line x1="62" y1="20" x2="104" y2="34" stroke="#a9a4c2" stroke-opacity="0.55" stroke-width="1.8"/><line x1="62" y1="80" x2="104" y2="34" stroke="#a9a4c2" stroke-opacity="0.55" stroke-width="1.8"/><line x1="104" y1="34" x2="124" y2="74" stroke="#a9a4c2" stroke-opacity="0.55" stroke-width="1.8"/><line x1="62" y1="80" x2="124" y2="74" stroke="#a9a4c2" stroke-opacity="0.55" stroke-width="1.8"/><circle class="node" style="animation-delay:0.00s" cx="24" cy="50" r="8" fill="#f6f1e7"/><circle class="node" style="animation-delay:0.55s" cx="62" cy="20" r="8" fill="#f6f1e7"/><circle class="node" style="animation-delay:1.10s" cx="62" cy="80" r="8" fill="#f6f1e7"/><circle class="node" style="animation-delay:1.65s" cx="104" cy="34" r="8" fill="#f6f1e7"/><circle class="node" style="animation-delay:2.20s" cx="124" cy="74" r="8" fill="#f6f1e7"/></g>
 </svg>
