@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="360" viewBox="0 0 600 360" role="img" aria-label="Ohiyo: group chat that feels like home. Free, open source and self-hostable, with text, voice, video and screen share.">
+  <title>Ohiyo</title>
+  <defs><clipPath id="c"><rect width="600" height="360" rx="18"/></clipPath></defs>
+  <style>
+    .b { animation: pop 7s ease-in-out infinite; transform-box: fill-box; transform-origin: 0 100%; }
+    .b2 { animation-delay: .8s; } .b3 { animation-delay: 1.6s; }
+    .d { animation: hop 1.2s ease-in-out infinite; transform-box: fill-box; }
+    .d2 { animation-delay: .15s; } .d3 { animation-delay: .3s; }
+    @keyframes pop { 0% { opacity: 0; transform: scale(.6); } 8%, 100% { opacity: 1; transform: scale(1); } }
+    @keyframes hop { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-5px); } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+  <g clip-path="url(#c)">
+    <rect width="600" height="360" fill="#f6f1e7"/>
+    <circle cx="560" cy="330" r="150" fill="#5b7768" fill-opacity="0.12"/>
+    <text x="40" y="74" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="44" font-weight="800" fill="#33473c" letter-spacing="-1.6">Ohiyo</text>
+    <text x="40" y="110" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="20" font-weight="600" fill="#5b7768">Group chat that feels like home.</text>
+    <text x="40" y="144" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="17" fill="#33473c" fill-opacity="0.8">Free, open source and self-hostable.</text>
+<text x="40" y="169" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="17" fill="#33473c" fill-opacity="0.8">Text, voice, video and screen share.</text>
+    <g class="b b1"><rect x="300" y="196" width="196" height="38" rx="19" fill="#ffffff"/><text x="318" y="221" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16" fill="#33473c">movie night at 8?</text></g>
+    <g class="b b2"><rect x="366" y="244" width="194" height="38" rx="19" fill="#5b7768"/><text x="384" y="269" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16" fill="#f6f1e7">bringing snacks!</text></g>
+    <g class="b b3"><rect x="300" y="292" width="76" height="38" rx="19" fill="#ffffff"/>
+      <circle class="d" cx="324" cy="311" r="4.5" fill="#5b7768"/><circle class="d d2" cx="338" cy="311" r="4.5" fill="#5b7768"/><circle class="d d3" cx="352" cy="311" r="4.5" fill="#5b7768"/></g>
+    <text x="40" y="332" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" fill="#5b7768">ohiyo.gg</text>
+  </g>
+  <rect x="0.5" y="0.5" width="599" height="359" rx="17.5" fill="none" stroke="#dcd5c4"/>
+</svg>

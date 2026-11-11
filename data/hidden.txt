@@ -1,0 +1,1 @@
+# One GitHub login per line. Anyone listed here is removed from the city and its ticker.

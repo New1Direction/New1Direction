@@ -1,0 +1,59 @@
+name: build the city
+
+# Redraws the profile's skyline from live repo data once a day, and lights a
+# window when a visitor opens a "light a window" issue.
+on:
+  schedule:
+    - cron: "17 5 * * *"
+  workflow_dispatch:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  issues: write
+
+# One run at a time, so two visitors never push over each other.
+concurrency:
+  group: city
+  cancel-in-progress: false
+
+jobs:
+  build:
+    # For issues, only the "light a window" ones. The title is compared here,
+    # in an expression, and is never passed to a shell.
+    if: github.event_name != 'issues' || startsWith(github.event.issue.title, 'light a window')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: refresh data and redraw
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Only the opener's login is used. It is validated in update_data.py.
+          VISITOR: ${{ github.event_name == 'issues' && github.event.issue.user.login || '' }}
+        run: |
+          python3 scripts/update_data.py
+          python3 scripts/build_city.py
+
+      - name: commit if the city changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets data
+          if git diff --cached --quiet; then
+            echo "Nothing changed."
+          else
+            git commit -m "chore: redraw the city"
+            git push
+          fi
+
+      - name: thank the visitor and close the issue
+        if: github.event_name == 'issues'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE: ${{ github.event.issue.number }}
+          REPO: ${{ github.repository }}
+        run: |
+          gh issue close "$ISSUE" --repo "$REPO" --comment "Your window is lit. Refresh the profile in a minute to see it. Thanks for stopping by."

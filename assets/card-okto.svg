@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="150" viewBox="0 0 600 150" role="img" aria-label="okto: A self-healing local proxy for AI agent traffic: inspect, repair and replay.">
+  <title>okto</title>
+  <rect x="0.5" y="0.5" width="599" height="149" rx="14.5" fill="#110f20" stroke="#2b2545"/>
+  <rect x="28" y="33" width="10" height="10" rx="2.5" fill="#ff7a59"/>
+  <text x="50" y="45" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="21" font-weight="700" fill="#f6f1e7">okto</text>
+  <text x="28" y="80" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16.5" fill="#a9a4c2">A self-healing local proxy for AI agent traffic: inspect,</text>
+<text x="28" y="104" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16.5" fill="#a9a4c2">repair and replay.</text>
+  <circle cx="566" cy="38" r="5" fill="#6ea8dc"/>
+  <text x="554" y="43" text-anchor="end" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#a9a4c2">Python</text>
+</svg>
