@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="66" viewBox="0 0 500 66" role="img" aria-label="Each arrow drops a disc into the column above it.">
+  <title>How to play</title>
+  <path d="M30 33 H10 M18 25 L10 33 L18 41" fill="none" stroke="#a9a4c2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="44" y="40" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="20" fill="#a9a4c2">each arrow drops a disc in its column</text>
+</svg>

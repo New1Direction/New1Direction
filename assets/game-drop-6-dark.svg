@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="66" viewBox="0 0 100 66" role="img" aria-label="Drop a disc in column 6">
+  <title>Drop a disc in column 6</title>
+  <style>
+    .arrow { animation: nudge 1.4s ease-in-out infinite; animation-delay: -1.0s; }
+    @keyframes nudge { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+  <g opacity="1">
+    <rect x="12.5" y="8.5" width="75" height="48" rx="24" fill="#1c1733" stroke="#ff7a59" stroke-opacity="0.7" stroke-width="1.5"/>
+    <path class="arrow" d="M50 20 V40 M40 31 L50 41 L60 31" fill="none" stroke="#ff7a59" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

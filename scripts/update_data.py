@@ -7,11 +7,14 @@
 - data/extras.json: the account's join date and repo.ing's public fee figure.
 - data/avatars/: a small copy of each visitor's avatar, for the ticker.
 - data/votes.json: one rooftop-garden vote per visitor.
+- data/game.json: the four-in-a-row game visitors play.
+- data/shipped.json: the newest commit on each tower's repo.
 
 Runs in GitHub Actions. A visitor's login arrives in the VISITOR environment
 variable and is checked against GitHub's own username rules before use.
 An issue's title arrives in ISSUE_TITLE and is only ever compared against the
-fixed list of vote titles. Nothing from an issue's body is read.
+fixed list of vote titles, or read as "drop N" with N from 1 to 7. Nothing
+from an issue's body is read.
 """
 from __future__ import annotations
 
@@ -26,6 +29,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from city_config import OWNER, TOWERS
+from game import column_from_title, new_game, with_move
 
 DATA = Path(__file__).resolve().parent.parent / "data"
 STATS = DATA / "stats.json"
@@ -34,6 +38,8 @@ CALENDAR = DATA / "calendar.json"
 EXTRAS = DATA / "extras.json"
 VOTES = DATA / "votes.json"
 AVATARS = DATA / "avatars"
+GAME = DATA / "game.json"
+SHIPPED = DATA / "shipped.json"
 HIDDEN = DATA / "hidden.txt"
 
 LOGIN_PATTERN = re.compile(r"^[A-Za-z0-9](?:[A-Za-z0-9-]{0,37}[A-Za-z0-9])?$")
@@ -45,6 +51,8 @@ MAX_AVATAR_BYTES = 60_000
 REPOING_BADGE = "https://repo.ing/api/badge/1388219884"
 FEES_PATTERN = re.compile(r"([0-9][0-9.,]*) SOL in indexed builder fees")
 VOTE_PREFIX = "vote for "
+SHIPPED_KEPT = 5
+MAX_SUBJECT_CHARS = 72
 
 
 def load_json(path: Path, fallback):
@@ -151,8 +159,12 @@ def with_visitor(visitors: list[dict], login: str) -> list[dict]:
     return (visitors + [{"login": login, "at": today}])[-MAX_VISITORS:]
 
 
-def fetch_bytes(url: str, limit: int) -> bytes | None:
+def fetch_bytes(url: str, limit: int, with_token: bool = False) -> bytes | None:
     request = urllib.request.Request(url, headers={"User-Agent": "profile-city"})
+    token = os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN")
+    if with_token and token:
+        # Only ever sent to api.github.com, never to another host.
+        request.add_header("Authorization", f"Bearer {token}")
     try:
         with urllib.request.urlopen(request, timeout=API_TIMEOUT_SECONDS) as response:
             data = response.read(limit + 1)
@@ -205,6 +217,28 @@ def with_vote(votes: dict, login: str, title: str) -> dict:
     return {**votes, login.lower(): choice}
 
 
+def latest_commit(name: str) -> dict | None:
+    """The newest commit on a repo's default branch: its first line and date."""
+    data = fetch_bytes(f"https://api.github.com/repos/{OWNER}/{name}/commits?per_page=1", 400_000, with_token=True)
+    try:
+        commit = json.loads(data)[0]["commit"]
+        subject = str(commit["message"]).splitlines()[0].strip()
+        when = str(commit["committer"]["date"])[:10]
+    except (TypeError, ValueError, KeyError, IndexError):
+        return None
+    if len(subject) > MAX_SUBJECT_CHARS:
+        subject = subject[: MAX_SUBJECT_CHARS - 1].rstrip() + "…"
+    return {"repo": name, "subject": subject, "date": when}
+
+
+def refreshed_shipped(previous: list) -> list:
+    """The most recent commits across the towers, newest first."""
+    commits = [commit for commit in (latest_commit(tower["repo"]) for tower in TOWERS) if commit]
+    if not commits:
+        return previous
+    return sorted(commits, key=lambda commit: commit["date"], reverse=True)[:SHIPPED_KEPT]
+
+
 def main() -> None:
     save_json(STATS, refreshed_stats(load_json(STATS, {})))
     calendar = fetch_calendar()
@@ -212,6 +246,7 @@ def main() -> None:
         save_json(CALENDAR, calendar)
 
     save_json(EXTRAS, refreshed_extras(load_json(EXTRAS, {})))
+    save_json(SHIPPED, refreshed_shipped(load_json(SHIPPED, [])))
 
     visitors = load_json(VISITORS, [])
     votes = load_json(VOTES, {})
@@ -221,6 +256,13 @@ def main() -> None:
         # Voting also lights a window: either way, you were here.
         visitors = with_visitor(visitors, login)
         votes = with_vote(votes, login, title)
+        column = column_from_title(title)
+        if column is not None and LOGIN_PATTERN.fullmatch(login):
+            game, outcome = with_move(load_json(GAME, new_game()), login, column)
+            save_json(GAME, game)
+            print(outcome)
+            # The workflow shows this line to the visitor.
+            Path(os.environ.get("RESULT_FILE", os.devnull)).write_text(outcome + "\n", encoding="utf-8")
     hidden = hidden_logins()
     visitors = [v for v in visitors if v["login"].lower() not in hidden]
     votes = {voter: choice for voter, choice in votes.items() if voter not in hidden}
@@ -228,6 +270,8 @@ def main() -> None:
         save_avatar(visitor["login"])
     save_json(VISITORS, visitors)
     save_json(VOTES, votes)
+    if not GAME.exists():
+        save_json(GAME, new_game())
     print(f"{len(visitors)} windows lit, {len(votes)} votes")
 
 

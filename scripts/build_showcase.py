@@ -37,6 +37,7 @@ HEADINGS = {
     "building": "what i'm building",
     "agents": "agents that keep receipts",
     "more": "more things i made",
+    "play": "play a game",
 }
 
 

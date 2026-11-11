@@ -13,7 +13,13 @@
     <radialGradient id="halo" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#ff9d6e" stop-opacity="0.6"/><stop offset="1" stop-color="#ff9d6e" stop-opacity="0"/></radialGradient>
   </defs>
   <style>
-    .px { animation: sweep 7s ease-in-out infinite; }
+    .px { animation: appear .5s ease-out both, sweep 7s ease-in-out infinite; }
+    .ship { animation: cross 46s linear infinite; }
+    .shipbob { animation: shipbob 5s ease-in-out infinite; }
+    .shiplight { animation: twinkle 1.4s ease-in-out infinite; }
+    @keyframes appear { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: none; } }
+    @keyframes cross { from { transform: translate(-80px, 36px); } to { transform: translate(1520px, 28px); } }
+    @keyframes shipbob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
     .st { animation: twinkle 4s ease-in-out infinite; }
     .st1 { animation-delay: -1.4s; } .st2 { animation-delay: -2.7s; }
     .au { animation: drift 18s ease-in-out infinite alternate; }
@@ -40,6 +46,7 @@
     <rect width="1200" height="330" fill="url(#sky)"/>
     <circle cx="1040" cy="250" r="150" fill="url(#halo)"/>
     <g filter="url(#blur)" opacity="0.85"><ellipse class="au au1" cx="900" cy="80" rx="210" ry="26" fill="#ffffff"/><ellipse class="au au2" cx="1050" cy="140" rx="170" ry="20" fill="#ffffff"/><ellipse class="au au3" cx="700" cy="46" rx="150" ry="16" fill="#ffffff"/></g>
+    <g class="ship"><g class="shipbob"><ellipse cx="0" cy="0" rx="34" ry="12" fill="#fff6e6" fill-opacity="0.92"/><path d="M-30 -5 l-12 -8 v26 l12 -8z" fill="#e2553a"/><rect x="-9" y="11" width="18" height="6" rx="3" fill="#6b6585"/><circle class="shiplight" cx="34" cy="0" r="2.4" fill="#e2553a"/><line x1="-42" y1="0" x2="-58" y2="0" stroke="#6b6585" stroke-width="1"/><rect x="-250" y="-11" width="192" height="22" rx="4" fill="#e2553a" fill-opacity="0.92"/><text x="-154" y="5" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#ffffff">tokenize your repo · repo.ing</text></g></g>
     
     
     <circle class="sun" cx="1040" cy="250" r="64" fill="#fff6e6"/>

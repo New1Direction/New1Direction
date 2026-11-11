@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="640" viewBox="0 0 500 640" role="img" aria-label="Four in a row, played by visitors. Sunset to move No moves yet. Go first.. Score: Sunset 0, Moonlight 0.">
+  <title>Whose turn it is</title>
+  <style>
+    .turn { animation: turn 1.6s ease-in-out infinite; }
+    @keyframes turn { 0%, 100% { opacity: 1; } 50% { opacity: .3; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+  <text x="44" y="92" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="19" fill="#6b6585">visitors vs visitors</text>
+  <text x="42" y="150" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="50" font-weight="800" letter-spacing="-1.8" fill="#2a2440">Four in a row</text>
+  <circle class="turn" cx="62" cy="236" r="19" fill="#e2553a"/>
+  <text x="96" y="249" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="36" font-weight="700" letter-spacing="-0.8" fill="#e2553a">Sunset to move</text>
+  <text x="44" y="316" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="25" fill="#2a2440" fill-opacity="0.82">Press a column below</text>
+  <text x="44" y="350" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="25" fill="#2a2440" fill-opacity="0.82">to drop a disc.</text>
+  <text x="44" y="420" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="20" fill="#6b6585">No moves yet. Go first.</text>
+  <rect x="44" y="476" width="412" height="1.5" fill="#cfc7b4"/>
+  <circle cx="58" cy="528" r="13" fill="#e2553a"/>
+  <text x="84" y="536" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="23" fill="#2a2440">Sunset</text>
+  <text x="246" y="538" text-anchor="end" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="30" font-weight="800" fill="#2a2440">0</text>
+  <circle cx="290" cy="528" r="13" fill="#33473c"/>
+  <text x="316" y="536" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="23" fill="#2a2440">Moonlight</text>
+  <text x="456" y="538" text-anchor="end" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="30" font-weight="800" fill="#2a2440">0</text>
+  <text x="44" y="596" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="18" fill="#6b6585">One move at a time. Nobody moves twice in a row.</text>
+</svg>

@@ -115,6 +115,52 @@ def fireworks(theme: dict) -> tuple[str, str]:
     return "".join(bursts), css
 
 
+SYNODIC_MONTH_DAYS = 29.530588853
+KNOWN_NEW_MOON = date(2000, 1, 6)
+
+
+def moon_phase(today: date) -> float:
+    """0 at new moon, 0.5 at full moon, back towards 1 at the next new moon."""
+    return ((today - KNOWN_NEW_MOON).days % SYNODIC_MONTH_DAYS) / SYNODIC_MONTH_DAYS
+
+
+def moon(theme: dict, sky_color: str, today: date) -> str:
+    """Tonight's moon, lit on the correct side by the correct amount."""
+    cx, cy, r = 1118, 62, 26
+    phase = moon_phase(today)
+    waxing = phase < 0.5
+    # How far the shadow's edge bulges: r at new or full, 0 at the quarters.
+    lit = phase * 2 if waxing else (1 - phase) * 2            # 0 dark .. 1 full
+    bulge = abs(1 - 2 * lit) * r
+    # Outer edge of the lit half, then the terminator back to the start.
+    outer_sweep = 1 if waxing else 0
+    inner_sweep = (0 if lit < 0.5 else 1) if waxing else (1 if lit < 0.5 else 0)
+    lit_path = (
+        f"M{cx} {cy - r} A{r} {r} 0 0 {outer_sweep} {cx} {cy + r} "
+        f"A{bulge:.1f} {r} 0 0 {inner_sweep} {cx} {cy - r} Z"
+    )
+    return (
+        f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="{sky_color}"/>'
+        f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="{theme["orb"]}" fill-opacity="0.1"/>'
+        f'<path d="{lit_path}" fill="{theme["orb"]}"/>'
+    )
+
+
+def airship(theme: dict) -> str:
+    """A small airship that crosses the sky towing a banner."""
+    return (
+        f'<g class="ship"><g class="shipbob">'
+        f'<ellipse cx="0" cy="0" rx="34" ry="12" fill="{theme["orb"]}" fill-opacity="0.92"/>'
+        f'<path d="M-30 -5 l-12 -8 v26 l12 -8z" fill="{theme["accent"]}"/>'
+        f'<rect x="-9" y="11" width="18" height="6" rx="3" fill="{theme["soft"]}"/>'
+        f'<circle class="shiplight" cx="34" cy="0" r="2.4" fill="{theme["accent"]}"/>'
+        f'<line x1="-42" y1="0" x2="-58" y2="0" stroke="{theme["soft"]}" stroke-width="1"/>'
+        f'<rect x="-250" y="-11" width="192" height="22" rx="4" fill="{theme["accent"]}" fill-opacity="0.92"/>'
+        f'<text x="-154" y="5" text-anchor="middle" font-family="{MONO}" font-size="13" font-weight="700" fill="#ffffff">tokenize your repo · repo.ing</text>'
+        f'</g></g>'
+    )
+
+
 def sky(theme_name: str, today: date, joined: str) -> str:
     theme = THEMES[theme_name]
     width, height = 1200, 330
@@ -144,7 +190,7 @@ def sky(theme_name: str, today: date, joined: str) -> str:
         if is_night else ""
     )
     orb = (
-        f'<circle cx="1118" cy="62" r="26" fill="{theme["orb"]}"/><circle cx="1129" cy="55" r="23" fill="{top}"/>'
+        moon(theme, top, today)
         if is_night else
         f'<circle class="sun" cx="1040" cy="250" r="64" fill="{theme["orb"]}"/>'
     )
@@ -166,7 +212,13 @@ def sky(theme_name: str, today: date, joined: str) -> str:
     <radialGradient id="halo" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="{theme["glow"]}" stop-opacity="0.6"/><stop offset="1" stop-color="{theme["glow"]}" stop-opacity="0"/></radialGradient>
   </defs>
   <style>
-    .px {{ animation: sweep 7s ease-in-out infinite; }}
+    .px {{ animation: appear .5s ease-out both, sweep 7s ease-in-out infinite; }}
+    .ship {{ animation: cross 46s linear infinite; }}
+    .shipbob {{ animation: shipbob 5s ease-in-out infinite; }}
+    .shiplight {{ animation: twinkle 1.4s ease-in-out infinite; }}
+    @keyframes appear {{ from {{ opacity: 0; transform: translateY(-10px); }} to {{ opacity: 1; transform: none; }} }}
+    @keyframes cross {{ from {{ transform: translate(-80px, 36px); }} to {{ transform: translate(1520px, 28px); }} }}
+    @keyframes shipbob {{ 0%, 100% {{ transform: translateY(0); }} 50% {{ transform: translateY(5px); }} }}
     .st {{ animation: twinkle 4s ease-in-out infinite; }}
     .st1 {{ animation-delay: -1.4s; }} .st2 {{ animation-delay: -2.7s; }}
     .au {{ animation: drift 18s ease-in-out infinite alternate; }}
@@ -187,6 +239,7 @@ def sky(theme_name: str, today: date, joined: str) -> str:
     <rect width="{width}" height="{height}" fill="url(#sky)"/>
     <circle cx="{1118 if is_night else 1040}" cy="{62 if is_night else 250}" r="{110 if is_night else 150}" fill="url(#halo)"/>
     {drifting}
+    {airship(theme)}
     {stars}
     {shooting}
     {orb}

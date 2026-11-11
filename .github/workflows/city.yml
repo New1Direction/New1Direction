@@ -1,7 +1,7 @@
 name: build the city
 
 # Redraws the profile from live data once a day. It also reacts to two kinds
-# of visitor issue: "light a window" and "vote for <tower>".
+# of visitor issue: "light a window", "vote for <tower>" and "drop <column>".
 on:
   schedule:
     - cron: "17 5 * * *"
@@ -26,6 +26,7 @@ jobs:
       github.event_name != 'issues'
       || startsWith(github.event.issue.title, 'light a window')
       || startsWith(github.event.issue.title, 'vote for ')
+      || startsWith(github.event.issue.title, 'drop ')
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -36,13 +37,16 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # Only the opener's login is used. It is validated in update_data.py.
           VISITOR: ${{ github.event_name == 'issues' && github.event.issue.user.login || '' }}
-          # Only ever compared against the fixed list of "vote for <tower>" titles.
+          # Only compared against the fixed vote titles, or read as "drop 1" to "drop 7".
+          RESULT_FILE: ${{ runner.temp }}/result.txt
           ISSUE_TITLE: ${{ github.event_name == 'issues' && github.event.issue.title || '' }}
         run: |
           python3 scripts/update_data.py
           python3 scripts/build_city.py
           python3 scripts/build_year.py
           python3 scripts/build_assets.py
+          python3 scripts/build_game.py
+          python3 scripts/build_street.py
 
       - name: commit if the city changed
         run: |
@@ -62,5 +66,8 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ISSUE: ${{ github.event.issue.number }}
           REPO: ${{ github.repository }}
+          RESULT_FILE: ${{ runner.temp }}/result.txt
         run: |
-          gh issue close "$ISSUE" --repo "$REPO" --comment "Done. Refresh the profile in a minute to see the city change. Thanks for stopping by."
+          # The result line is written by our own script, from a fixed set of messages.
+          RESULT="$(cat "$RESULT_FILE" 2>/dev/null || true)"
+          gh issue close "$ISSUE" --repo "$REPO" --comment "${RESULT:-Done.} Refresh the profile in a minute to see the city change. Thanks for stopping by."
