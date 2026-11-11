@@ -20,17 +20,26 @@
   <a href="https://x.com/AresAgent">@AresAgent</a>
 </p>
 
-## What I'm building
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/heading-building-dark.svg"><source media="(prefers-color-scheme: light)" srcset="assets/heading-building-light.svg"><img src="assets/heading-building-dark.svg" width="100%" alt="What I'm building"></picture>
 
-<p>
-  <a href="https://repo.ing"><img src="assets/repoing.svg" width="49.5%" alt="repo.ing: the market layer for open source. Launch a market for any public GitHub repo. Every trade pays the builders."></a>
-  <a href="https://github.com/New1Direction/ohiyo"><img src="assets/ohiyo.svg" width="49.5%" alt="Ohiyo: group chat that feels like home. Free, open source and self-hostable, with text, voice, video and screen share."></a>
+<a href="https://repo.ing"><img src="assets/showcase-repoing.svg" width="100%" alt="repo.ing: the market layer for open source. Launch a market for any public GitHub repo. Every trade pays the builders. Shown: the live Explore page listing repository markets."></a>
+
+<p align="center">
+  <a href="https://repo.ing/explore"><b>Explore markets</b></a> &nbsp;·&nbsp;
+  <a href="https://repo.ing/launch">Launch a repo</a> &nbsp;·&nbsp;
+  <a href="https://repo.ing/stats">Protocol analytics</a> &nbsp;·&nbsp;
+  <a href="https://github.com/New1Direction/repo.ing">Source</a>
 </p>
 
-- **[repo.ing](https://repo.ing)** connects public GitHub repos to their own markets on Solana. Anyone can launch one, and every trade earns fees for the people who built the code. [Explore markets](https://repo.ing/explore) or [read the source](https://github.com/New1Direction/repo.ing).
-- **[Ohiyo](https://ohiyo.gg)** is a free, open source group chat with channels, DMs, voice, video and screen share. Use it [in your browser](https://app.ohiyo.gg) or [host it yourself](https://github.com/New1Direction/ohiyo).
+<a href="https://ohiyo.gg"><img src="assets/showcase-ohiyo.svg" width="100%" alt="Ohiyo: group chat that feels like home. Free, open source and self-hostable, with text, voice, video and screen share. Shown: a group chat on desktop and on a phone."></a>
 
-## Agents that keep receipts
+<p align="center">
+  <a href="https://app.ohiyo.gg"><b>Open Ohiyo</b></a> &nbsp;·&nbsp;
+  <a href="https://ohiyo.gg">Visit the site</a> &nbsp;·&nbsp;
+  <a href="https://github.com/New1Direction/ohiyo">Host it yourself</a>
+</p>
+
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/heading-agents-dark.svg"><source media="(prefers-color-scheme: light)" srcset="assets/heading-agents-light.svg"><img src="assets/heading-agents-dark.svg" width="100%" alt="Agents that keep receipts"></picture>
 
 Tools for AI agents you can check, rewind and trust with secrets.
 
@@ -41,7 +50,7 @@ Tools for AI agents you can check, rewind and trust with secrets.
   <a href="https://github.com/New1Direction/thumper"><img src="assets/card-thumper.svg" width="49.5%" alt="thumper: the fast local runner under korgex, with warm sandboxes and self-repair. Rust."></a>
 </p>
 
-## More things I made
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/heading-more-dark.svg"><source media="(prefers-color-scheme: light)" srcset="assets/heading-more-light.svg"><img src="assets/heading-more-dark.svg" width="100%" alt="More things I made"></picture>
 
 <p>
   <a href="https://github.com/New1Direction/OntologyEX"><img src="assets/card-ontologyex.svg" width="49.5%" alt="OntologyEX: point an agent at a repo and get back the business it runs, every claim cited. Python."></a>
@@ -62,6 +71,7 @@ No JavaScript runs here. GitHub doesn't allow it, so everything is a picture tha
 - **Every tower is its own picture**, placed edge to edge, which is why you can click them one by one.
 - **The motion is CSS inside SVG.** The headline, the shooting stars and the flickering windows are drawn once and animate on their own. If your device asks for less motion, they hold still.
 - **The year view is my contribution graph in 3D.** Each day of the last year is a building, taller on busier days. It rises in a wave when the page loads and is redrawn daily.
+- **The product shots are real.** The repo.ing and Ohiyo screens are actual screenshots, stored inside each picture and framed in a drawn browser window and phone.
 - **Night and day follow your theme.** Switch GitHub between dark and light and the city goes from night to dawn.
 - **Lighting a window opens an issue.** An Action reads only your username, adds a lit window, redraws the city and closes the issue, usually within a minute.
 

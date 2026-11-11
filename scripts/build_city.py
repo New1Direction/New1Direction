@@ -15,6 +15,7 @@ from html import escape
 from pathlib import Path
 
 from city_config import THEMES, TOWERS
+from pixelfont import pixel_cells
 
 ROOT = Path(__file__).resolve().parent.parent
 ASSETS = ROOT / "assets"
@@ -27,22 +28,6 @@ REDUCED_MOTION = "@media (prefers-reduced-motion: reduce) { * { animation: none 
 ACTIVE_WITHIN_DAYS = 30
 TICKER_NAMES = 24
 
-# A 5x7 pixel alphabet drawn for this page; only the letters the headline needs.
-GLYPHS = {
-    "i": ["#", ".", "#", "#", "#", "#", "#"],
-    "l": ["#.", "#.", "#.", "#.", "#.", "#.", ".#"],
-    "k": ["#....", "#....", "#..#.", "#.#..", "##...", "#.#..", "#..#."],
-    "e": [".....", ".....", ".###.", "#...#", "#####", "#....", ".###."],
-    "c": [".....", ".....", ".###.", "#...#", "#....", "#...#", ".###."],
-    "o": [".....", ".....", ".###.", "#...#", "#...#", "#...#", ".###."],
-    "m": [".....", ".....", "##.#.", "#.#.#", "#.#.#", "#.#.#", "#.#.#"],
-    "p": [".....", ".....", "####.", "#...#", "####.", "#....", "#...."],
-    "u": [".....", ".....", "#...#", "#...#", "#...#", "#..##", ".##.#"],
-    "t": ["..#..", "..#..", "#####", "..#..", "..#..", "..#.#", "...#."],
-    "r": [".....", ".....", "#.##.", "##..#", "#....", "#....", "#...."],
-    "s": [".....", ".....", ".####", "#....", ".###.", "....#", "####."],
-    " ": ["...", "...", "...", "...", "...", "...", "..."],
-}
 HEADLINE = "i like computers"
 
 
@@ -67,34 +52,12 @@ def scatter(*parts: int) -> int:
 
 
 # ------------------------------------------------------------------- the sky
-def pixel_headline(theme: dict, x0: float, y0: float, pitch: float) -> tuple[str, float]:
-    """The headline as lit squares, with a slow sweep of light across it."""
-    cell = pitch - 2.5
-    cells = []
-    column = 0
-    for letter in HEADLINE:
-        glyph = GLYPHS[letter]
-        for row, bits in enumerate(glyph):
-            for offset, bit in enumerate(bits):
-                if bit != "#":
-                    continue
-                x = x0 + (column + offset) * pitch
-                y = y0 + row * pitch
-                delay = (column + offset) * 0.045
-                cells.append(
-                    f'<rect class="px" style="animation-delay:{delay:.2f}s" x="{x:.1f}" y="{y:.1f}" '
-                    f'width="{cell:.1f}" height="{cell:.1f}" rx="2.4" fill="{theme["ink"]}"/>'
-                )
-        column += len(glyph[0]) + 1
-    return "".join(cells), x0 + column * pitch
-
-
 def sky(theme_name: str) -> str:
     theme = THEMES[theme_name]
     width, height = 1200, 330
     is_night = theme_name == "dark"
     top, upper, lower, horizon = theme["sky"]
-    headline, end_x = pixel_headline(theme, 64, 86, 11.2)
+    headline, end_x = pixel_cells(HEADLINE, 64, 86, 11.2, theme["ink"])
     stars = "".join(
         f'<circle class="st st{i % 3}" cx="{(i * 197 + 40) % width}" cy="{14 + (i * 83) % 150}" '
         f'r="{1 + (i % 3) * 0.45:.2f}" fill="{theme["orb"]}"/>'
