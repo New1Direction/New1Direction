@@ -1,13 +1,13 @@
 [
   {
+    "date": "2026-11-14",
+    "repo": "OntologyEX",
+    "subject": "Merge pull request #82 from New1Direction/codex/digital-twin-foundations"
+  },
+  {
     "date": "2026-11-05",
     "repo": "repo.ing",
     "subject": "Revert \"Add authenticated durable Operator launch bundles\""
-  },
-  {
-    "date": "2026-11-04",
-    "repo": "OntologyEX",
-    "subject": "Agent eval: --key-env reads the API key from a variable of its own (#81)"
   },
   {
     "date": "2026-10-28",
