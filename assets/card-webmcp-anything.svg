@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="600" height="176" viewBox="0 0 600 176" role="img" aria-label="webmcp-anything: Turn any URL into tools an AI agent can call. One endpoint, no per-site build. TypeScript. 8 stars.">
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="176" viewBox="0 0 600 176" role="img" aria-label="webmcp-anything: Turn any URL into tools an AI agent can call. One endpoint, no per-site build. TypeScript. 9 stars.">
   <title>webmcp-anything</title>
   <style>
     .wire { stroke-dasharray: 5 7; animation: wire 1.2s linear infinite; }
@@ -12,7 +12,7 @@
   <text x="28" y="48" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="21" font-weight="700" fill="#f6f1e7">webmcp-anything</text>
   <circle cx="452" cy="28" r="5" fill="#5b9bd5"/>
   <text x="462" y="33" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#a9a4c2">TypeScript</text>
-  <text x="572" y="33" text-anchor="end" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#f6f1e7" fill-opacity="0.85">★ 8</text>
+  <text x="572" y="33" text-anchor="end" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#f6f1e7" fill-opacity="0.85">★ 9</text>
   <text x="28" y="84" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16" fill="#a9a4c2">Turn any URL into tools an AI agent can</text>
 <text x="28" y="107" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16" fill="#a9a4c2">call. One endpoint, no per-site build.</text>
   <g transform="translate(426 50)"><rect x="4" y="38" width="62" height="24" rx="12" fill="none" stroke="#f6f1e7" stroke-width="2"/><circle cx="17" cy="50" r="4" fill="#7ad7f0"/><rect x="26" y="47" width="30" height="6" rx="3" fill="#a9a4c2"/><path class="wire" d="M68 50 H88 M88 50 C100 50 98 25 112 25 M88 50 H112 M88 50 C100 50 98 77 112 77" fill="none" stroke="#ff7a59" stroke-width="2" stroke-linecap="round"/><rect class="tool" style="animation-delay:0.90s" x="112" y="16" width="22" height="18" rx="5" fill="#f6f1e7"/><rect class="tool" style="animation-delay:1.25s" x="112" y="42" width="22" height="18" rx="5" fill="#f6f1e7"/><rect class="tool" style="animation-delay:1.60s" x="112" y="68" width="22" height="18" rx="5" fill="#f6f1e7"/></g>
