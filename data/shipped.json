@@ -1,8 +1,13 @@
 [
   {
-    "date": "2026-11-26",
+    "date": "2026-11-28",
+    "repo": "korg",
+    "subject": "Merge pull request #33 from New1Direction/governor/witnessed-runs"
+  },
+  {
+    "date": "2026-11-27",
     "repo": "webmcp-anything",
-    "subject": "docs: update API, SDK and self-hosting guides (#90)"
+    "subject": "feat: check visible form values in browser journeys (#100)"
   },
   {
     "date": "2026-11-15",
@@ -18,10 +23,5 @@
     "date": "2026-10-28",
     "repo": "ohiyo",
     "subject": "Add self-hosting baseline, theme previews, local captions and desktop h\u2026"
-  },
-  {
-    "date": "2026-10-14",
-    "repo": "RepoLens",
-    "subject": "release: finalize 3.2.1 Web Store submission readiness"
   }
 ]
